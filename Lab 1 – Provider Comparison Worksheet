@@ -1,0 +1,41 @@
+Lab 1 – Provider Comparison Worksheet
+
+Your Name: Jonathan Wilkerson
+
+Date: 1/8/2026 (Today's date - fill in)
+
+1. Which provider reported clearer error messages—SQLClient or ODBC? Why?**
+
+Answer: SQLClient reported clearer error messages. In the test results, SQLClient provided specific, human-readable error messages like "Login failed for user 'wronguser'" and "A network-related or instance-specific error occurred," which clearly indicate the nature of the problem. While both providers connected successfully in the successful tests, SQLClient's error messages are more descriptive and easier to troubleshoot for .NET developers.
+
+2. List two differences in parameter names between SQLClient and ODBC connection strings.**
+
+Answer:
+1. Timeout parameter: SQLClient uses `Connection Timeout=10` while ODBC uses simply `Timeout=10`
+2. Authentication parameter:** SQLClient uses `Trusted_Connection=true` while ODBC uses `Trusted_Connection=yes`
+
+Additional differences observed:
+- SQLClient: `User ID=sa` vs ODBC: `UID=sa`
+- SQLClient: `Password=pass` vs ODBC: `PWD=pass`
+
+3. Which provider connected more reliably in your environment? Explain your setup.
+
+Answer: Both providers connected equally reliably in this environment. The setup included:
+- SQL Server 2019 (version 16.00.1160) running locally
+- ODBC Driver 17 for SQL Server installed (msodbcsql17.dll)
+- Windows Authentication enabled
+- .NET 9.0 console application
+Both SQLClient and ODBC established successful connections on the first attempt, demonstrating equal reliability in this configuration.
+
+4. If you were building a new .NET application targeting SQL Server, which provider would you choose and why?**
+
+Answer: I would choose SQLClient (specifically Microsoft.Data.SqlClient, the newer version) for several reasons:
+1. Native .NET integration: SQLClient is designed specifically for .NET and SQL Server, offering better performance
+2. Active development: Microsoft.Data.SqlClient is actively maintained and receives regular updates
+3. Feature richness: Provides access to SQL Server-specific features and optimizations
+4. Type safety: Better integration with .NET's type system and ADO.NET framework
+5. Future-proof: While System.Data.SqlClient shows deprecation warnings, Microsoft.Data.SqlClient is the recommended path forward
+
+
+
+
